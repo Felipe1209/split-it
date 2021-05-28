@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:split_it/core/app_images.dart';
+import 'package:split_it/core/core.dart';
 import 'package:split_it/modules/splash/image_widget.dart';
-import 'package:split_it/theme/app_theme.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -13,7 +12,7 @@ class SplashPage extends StatelessWidget {
         height: double.maxFinite,
         width: double.maxFinite,
         decoration: BoxDecoration(
-          gradient: AppTheme.gradients.background
+          gradient: AppGradients.background
         ),
         child: SafeArea(
           top: true,

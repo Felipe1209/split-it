@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:split_it/modules/login/login_page.dart';
 import 'package:split_it/modules/splash/splash_page.dart';
 
 class AppWidget extends StatelessWidget {
@@ -9,9 +10,10 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Split.it',
-      initialRoute: '/splash',
+      initialRoute: '/login',
       routes:{
-        '/splash' : (context) => SplashPage()
+        '/splash' : (context) => SplashPage(),
+        '/login' : (context) => LoginPage()
       }
     );
   }
