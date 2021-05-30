@@ -15,13 +15,17 @@ class LoginButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton.icon(
-      icon: Image.asset(image),
-      label: Text(label, style: AppTextStyles.loginButtons),
-      style: ElevatedButton.styleFrom(
-        primary: AppColors.white
+    return Container(
+      width: 250,
+      height: 40,
+      child: ElevatedButton.icon(
+        icon: Image.asset(image),
+        label: Text(label, style: AppTextStyles.loginButtons),
+        style: ElevatedButton.styleFrom(
+          primary: AppColors.white
+        ),
+        onPressed: onPressed,
       ),
-      onPressed: onPressed,
     );
   }
 }
