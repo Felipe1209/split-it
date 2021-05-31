@@ -1,8 +1,13 @@
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:split_it/modules/login/login_state.dart';
 import 'package:split_it/modules/login/models/user_model.dart';
 
 class LoginController{
-  UserModel? user;
+  LoginState state = LoginStateEmpty();
+  VoidCallback onUpdate;
+
+  LoginController({required this.onUpdate});
 
   Future<void> googleSignIn() async {
     GoogleSignIn _googleSignIn = GoogleSignIn(
@@ -10,10 +15,14 @@ class LoginController{
         'email',
       ],);
     try {
+      state = LoginStateLoading();
+      onUpdate();
       final account = await _googleSignIn.signIn();
-      user = UserModel.google(account!);
-    } catch (e){
-      print(e);
+      state = LoginStateSuccess(user: UserModel.google(account!));
+      onUpdate();
+    } catch (error){
+      state = LoginStateFailure(message: error.toString());
+      onUpdate();
     }
   }
 

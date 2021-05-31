@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:split_it/core/core.dart';
 import 'package:split_it/modules/login/login_button_widget.dart';
 import 'package:split_it/modules/login/login_controller.dart';
+import 'package:split_it/modules/login/login_state.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -11,7 +12,15 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final controller = LoginController();
+  late LoginController controller;
+
+  @override
+  void initState() {
+    controller = LoginController(onUpdate: (){
+      setState(() {});
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +39,13 @@ class _LoginPageState extends State<LoginPage> {
                   title: Text('Faça seu login com\numa das contas abaixo', style: AppTextStyles.loginButtons),
                 ),
                 SizedBox(height: 40),
+                if(controller.state is LoginStateLoading) ...[CircularProgressIndicator()]
+                else if (controller.state is LoginStateFailure) ...[
+                  Text((controller.state as LoginStateFailure).message)
+                ] else
                 LoginButtonWidget(image: AppImages.google, label: 'Entrar com Google',
                     onPressed: () => controller.googleSignIn()
                 ),
-                SizedBox(height: 20),
                 //TODO: REALIZAR A CONFIGURAÇÃO DO BOTÃO LOGIN APPLE
                 /*LoginButtonWidget(image: AppImages.apple, label: 'Entrar com Apple',
                     onPressed: (){}),*/
