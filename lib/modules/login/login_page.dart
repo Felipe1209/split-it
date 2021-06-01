@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:split_it/core/core.dart';
 import 'package:split_it/modules/login/login_button_widget.dart';
 import 'package:split_it/modules/login/login_controller.dart';
+import 'package:split_it/modules/login/login_service.dart';
 import 'package:split_it/modules/login/login_state.dart';
 
 class LoginPage extends StatefulWidget {
@@ -23,7 +24,8 @@ class _LoginPageState extends State<LoginPage> {
       } else{
         setState(() {});
       }
-    });
+    },
+    service: LoginServiceImpl());
     super.initState();
   }
 
