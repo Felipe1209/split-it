@@ -3,9 +3,10 @@ import 'package:split_it/core/core.dart';
 import 'package:split_it/modules/login/models/user_model.dart';
 
 class AppBarWidget extends PreferredSize{
-  UserModel user;
+  final UserModel user;
+  final VoidCallback onTap;
 
-  AppBarWidget({required this.user}) : super(
+  AppBarWidget({required this.user, required this.onTap}) : super(
     preferredSize: Size.fromHeight(244),
     child: Container(
       height: 244,
@@ -13,10 +14,37 @@ class AppBarWidget extends PreferredSize{
           color: AppColors.greenPrimary
       ),
       child: Padding(
-        padding: EdgeInsets.only(top: 62, left: 24, right: 24),
+        padding: EdgeInsets.only(top: 62),
         child: Column(
           children: [
-            Row(
+            ListTile(
+              leading: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.network(user.photoUrl!)),
+              title: Text(user.name!, style: AppTextStyles.appBar),
+              trailing: GestureDetector(
+                child: Container(
+                    height: 62,
+                    width: 60,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(width: 1, color: AppColors.white)
+                    ),
+                    child: Icon(Icons.add, color: AppColors.white)
+                ),
+                onTap: onTap,
+              ),
+            )
+          ],
+        ),
+      ),
+    ),
+  );
+
+}
+
+/*
+Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
@@ -45,10 +73,4 @@ class AppBarWidget extends PreferredSize{
                 )
               ],
             ),
-          ],
-        ),
-      ),
-    ),
-  );
-
-}
+ */

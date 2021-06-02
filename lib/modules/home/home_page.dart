@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
     final UserModel user = ModalRoute.of(context)!.settings.arguments as UserModel;
 
     return Scaffold(
-      appBar: AppBarWidget(user: user)
+      appBar: AppBarWidget(user: user, onTap: () {  },)
     );
 
   }
