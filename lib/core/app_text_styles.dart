@@ -14,4 +14,10 @@ class AppTextStyles{
     fontSize: 16,
     fontWeight: FontWeight.w400,
   );
+
+  static final TextStyle appBar = GoogleFonts.inter(
+    color: AppColors.white,
+    fontSize: 24,
+    fontWeight: FontWeight.w700,
+  );
 }
