@@ -27,6 +27,18 @@ class AppTextStyles{
     fontWeight: FontWeight.w400,
   );
 
+  static final TextStyle eventTileTitle = GoogleFonts.inter(
+    color: AppColors.black,
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+  );
+
+  static final TextStyle eventTileSubtitle = GoogleFonts.inter(
+    color: AppColors.grey,
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+  );
+
   static final TextStyle infoCardReceive = GoogleFonts.inter(
     color: AppColors.greenPrimary,
     fontSize: 20,

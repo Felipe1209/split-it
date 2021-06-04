@@ -6,7 +6,7 @@ class InfoCardWidget extends StatelessWidget {
   final MoneyIconType type;
   final TextStyle textStyle;
   final String label;
-  final String value;
+  final double value;
 
   const InfoCardWidget({
     Key? key,

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:split_it/core/core.dart';
+import 'package:split_it/modules/home/widgets/appbar/bottom_appbar_widget.dart';
 import 'package:split_it/modules/login/models/user_model.dart';
-
-import 'info_card_widget.dart';
-import 'money_icon_widget.dart';
 
 class AppBarWidget extends PreferredSize {
   final UserModel user;
@@ -42,23 +40,7 @@ class AppBarWidget extends PreferredSize {
                     ),
                   ),
                   SizedBox(height: 36),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      InfoCardWidget(
-                          type: MoneyIconType.receive,
-                          label: 'A receber',
-                          value: '145,00',
-                          textStyle: AppTextStyles.infoCardReceive
-                      ),
-                      InfoCardWidget(
-                          type: MoneyIconType.send,
-                          label: 'A pagar',
-                          value: '81,50',
-                          textStyle: AppTextStyles.infoCardGive
-                      ),
-                    ],
-                  )
+                  BottomAppBarWidget()
                 ],
               ),
             ],

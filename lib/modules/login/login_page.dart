@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:split_it/core/core.dart';
-import 'package:split_it/modules/login/login_button_widget.dart';
+import 'package:split_it/modules/login/widgets/login_button_widget.dart';
 import 'package:split_it/modules/login/login_controller.dart';
 import 'package:split_it/modules/login/login_service.dart';
 import 'package:split_it/modules/login/login_state.dart';
