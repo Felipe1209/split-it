@@ -5,4 +5,6 @@ class AppImages {
   static String get emoji => 'assets/images/emoji.png';
   static String get apple => 'assets/images/apple.png';
   static String get google => 'assets/images/google.png';
+  static String get receiveMoney => 'assets/images/receive-money.png';
+  static String get sendMoney => 'assets/images/send-money.png';
 }

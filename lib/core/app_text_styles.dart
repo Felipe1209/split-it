@@ -10,14 +10,32 @@ class AppTextStyles{
   );
 
   static final TextStyle loginButtons = GoogleFonts.inter(
-    color: AppColors.buttons,
+    color: AppColors.grey,
     fontSize: 16,
     fontWeight: FontWeight.w400,
   );
 
-  static final TextStyle appBar = GoogleFonts.inter(
+  static final TextStyle appBar = GoogleFonts.montserrat(
     color: AppColors.white,
     fontSize: 24,
     fontWeight: FontWeight.w700,
+  );
+
+  static final TextStyle infoCardTitle = GoogleFonts.inter(
+    color: AppColors.grey,
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+  );
+
+  static final TextStyle infoCardReceive = GoogleFonts.inter(
+    color: AppColors.greenPrimary,
+    fontSize: 20,
+    fontWeight: FontWeight.w600,
+  );
+
+  static final TextStyle infoCardGive = GoogleFonts.inter(
+    color: AppColors.redPrimary,
+    fontSize: 20,
+    fontWeight: FontWeight.w600,
   );
 }
