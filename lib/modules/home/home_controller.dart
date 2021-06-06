@@ -11,8 +11,8 @@ class HomeController{
   Function(HomeState)? onChange;
   late HomeRepository repository;
 
-  HomeController({required this.onUpdate}){
-    repository = HomeRepositoryMock();
+  HomeController({required this.onUpdate, HomeRepository? repository}){
+    this.repository = repository ?? HomeRepositoryMock();
   }
 
   getEvents() async{
@@ -36,6 +36,10 @@ class HomeController{
     if(onChange != null){
       onChange!(state);
     }
+  }
+
+  void listen(Function(HomeState) onChange){
+    this.onChange = onChange;
   }
 
 }
