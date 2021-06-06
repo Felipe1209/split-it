@@ -8,7 +8,7 @@ class EventTileWidget extends StatelessWidget {
 
   const EventTileWidget({
     Key? key,
-    required this.event
+    required this.event,
   }) : super(key: key);
 
   MoneyIconType get type => event.value > 0 ? MoneyIconType.receive : MoneyIconType.send;

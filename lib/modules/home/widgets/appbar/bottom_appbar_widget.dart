@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:split_it/core/core.dart';
 import 'package:split_it/modules/home/widgets/appbar/appbar_controller.dart';
-import '../info_card_widget.dart';
+import 'info_card_widget.dart';
 import '../money_icon_widget.dart';
 import 'appbar_state.dart';
 
@@ -13,13 +13,14 @@ class BottomAppBarWidget extends StatefulWidget {
 }
 
 class _BottomAppBarWidgetState extends State<BottomAppBarWidget> {
-  final controller = AppBarController();
+  late AppBarController controller;
 
   @override
   void initState() {
-    controller.getDashboard(onUpdate: () {
+    controller = AppBarController(onUpdate: () {
       setState(() {});
     });
+    controller.getDashboard();
     super.initState();
   }
 
@@ -28,7 +29,23 @@ class _BottomAppBarWidgetState extends State<BottomAppBarWidget> {
     switch (controller.state.runtimeType) {
       case AppBarStateLoading:
         {
-          return Center(child: CircularProgressIndicator());
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              InfoCardWidget(
+                  type: MoneyIconType.receive,
+                  label: 'A receber',
+                  value: 0,
+                  textStyle: AppTextStyles.infoCardReceive
+              ),
+              InfoCardWidget(
+                  type: MoneyIconType.send,
+                  label: 'A pagar',
+                  value: 0,
+                  textStyle: AppTextStyles.infoCardGive
+              ),
+            ],
+          );
         }
       case AppBarStateFailure:
         {
@@ -41,16 +58,18 @@ class _BottomAppBarWidgetState extends State<BottomAppBarWidget> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               InfoCardWidget(
-                  type: MoneyIconType.receive,
-                  label: 'A receber',
-                  value: dashboard.receive,
-                  textStyle: AppTextStyles.infoCardReceive
+                type: MoneyIconType.receive,
+                label: 'A receber',
+                value: dashboard.receive,
+                textStyle: AppTextStyles.infoCardReceive,
+                isLoading: true,
               ),
               InfoCardWidget(
-                  type: MoneyIconType.send,
-                  label: 'A pagar',
-                  value: dashboard.send,
-                  textStyle: AppTextStyles.infoCardGive
+                type: MoneyIconType.send,
+                label: 'A pagar',
+                value: dashboard.send,
+                textStyle: AppTextStyles.infoCardGive,
+                isLoading: true,
               ),
             ],
           );

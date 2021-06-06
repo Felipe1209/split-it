@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:split_it/core/core.dart';
 import 'package:split_it/modules/home/widgets/money_icon_widget.dart';
 
@@ -7,13 +8,15 @@ class InfoCardWidget extends StatelessWidget {
   final TextStyle textStyle;
   final String label;
   final double value;
+  final bool isLoading;
 
   const InfoCardWidget({
     Key? key,
     required this.textStyle,
     required this.label,
     required this.value,
-    required this.type
+    required this.type,
+    this.isLoading = false
   }) : super(key: key);
 
   @override
@@ -35,8 +38,22 @@ class InfoCardWidget extends StatelessWidget {
             SizedBox(height: 40),
             Text(label, style: AppTextStyles.infoCardTitle),
             SizedBox(height: 4),
+            if(!isLoading) ...[
+              SizedBox(
+                width: 136,
+                height: 24,
+                child: Shimmer.fromColors(
+                  baseColor: AppColors.loadingMoneyHigh,
+                  highlightColor: AppColors.loadingMoneyBase,
+                  child: Container(
+                    color: AppColors.white,
+                  )
+                ),
+              )
+            ]
+            else ...[
             Text('R\$ $value', style: textStyle)
-
+            ]
           ]),
       ),
     );

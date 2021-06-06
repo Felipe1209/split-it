@@ -16,9 +16,16 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   google_fonts: ^2.1.0
+
+  #Login Social
   firebase_core: ^1.2.0
   google_sign_in: ^5.0.4
+
+  #Testes com mock
   mocktail: ^0.1.4
+
+  #Estilizar o loading
+  shimmer: ^2.0.0
 
 dev_dependencies:
   flutter_test:

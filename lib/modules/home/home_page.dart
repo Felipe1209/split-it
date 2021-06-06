@@ -34,7 +34,16 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBarWidget(user: user, onTap: () {  }),
       body:
         (controller.state is HomeStateLoading) ?
-        Center(child: CircularProgressIndicator()) :
+        Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircularProgressIndicator(),
+              SizedBox(height: 10),
+              Text('Localizando seus eventos...', style: AppTextStyles.eventTileTitle)
+            ],
+          ),
+        ) :
 
         (controller.state is HomeStateFailure) ?
         Center(child: Text((controller.state as HomeStateFailure).message, style: AppTextStyles.infoCardTitle)) :
