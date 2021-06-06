@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final UserModel user = ModalRoute.of(context)!.settings.arguments as UserModel;
     return Scaffold(
-      appBar: AppBarWidget(user: user, onTap: () {  }),
+      appBar: AppBarWidget(user: user, onTap: () => Navigator.pushNamed(context, '/create-split')),
       body:
         (controller.state is HomeStateLoading) ?
         Center(
