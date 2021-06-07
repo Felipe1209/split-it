@@ -50,4 +50,58 @@ class AppTextStyles{
     fontSize: 20,
     fontWeight: FontWeight.w600,
   );
+
+  static final TextStyle stepperIndicatorPrimary = GoogleFonts.roboto(
+    color: AppColors.greenPrimary,
+    fontSize: 14,
+    fontWeight: FontWeight.w700
+  );
+
+  static final TextStyle stepperIndicatorSecondary = GoogleFonts.roboto(
+      color: AppColors.grey,
+      fontSize: 14,
+      fontWeight: FontWeight.w400
+  );
+
+  static final TextStyle splitButtons = GoogleFonts.inter(
+    color: AppColors.grey,
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+  );
+
+  static final TextStyle splitButtonsDisabled = GoogleFonts.inter(
+    color: AppColors.textFieldBorder,
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+  );
+
+  static final TextStyle splitButtonsFinal = GoogleFonts.inter(
+    color: AppColors.greenPrimary,
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+  );
+
+  static final TextStyle stepOneTitle = GoogleFonts.inter(
+    color: AppColors.black,
+    fontSize: 24,
+    fontWeight: FontWeight.w700
+  );
+
+  static final TextStyle stepOneSubtitle = GoogleFonts.inter(
+      color: AppColors.black,
+      fontSize: 24,
+      fontWeight: FontWeight.w400
+  );
+
+  static final TextStyle stepOneHint = GoogleFonts.inter(
+      color: AppColors.grey,
+      fontSize: 16,
+      fontWeight: FontWeight.w400,
+  );
+
+  static final TextStyle stepOneTextField = GoogleFonts.inter(
+      color: AppColors.black,
+      fontSize: 16,
+      fontWeight: FontWeight.w500
+  );
 }

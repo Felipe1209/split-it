@@ -8,6 +8,7 @@ class AppColors {
   static final Color infoCardBorder = Color(0xffDCE0E5);
   static final Color loadingMoneyHigh = Color(0xffE0E0E0);
   static final Color loadingMoneyBase = Color(0xffF5F5F5);
+  static final Color textFieldBorder = Color(0xffE0E0E0);
   static final Color grey = Color(0xff666666);
   static final Color white = Color(0xffFFFFFF);
   static final Color black = Color(0xff000000);
