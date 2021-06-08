@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:split_it/core/core.dart';
 import 'package:split_it/modules/create_split/create_split_controller.dart';
 import 'package:split_it/modules/create_split/steps/step_one/step_one_page.dart';
+import 'package:split_it/modules/create_split/steps/step_three/step_three_page.dart';
+import 'package:split_it/modules/create_split/steps/step_two/step_two_page.dart';
 import 'package:split_it/modules/create_split/widgets/split_button_widget.dart';
 import 'widgets/split_appbar_widget.dart';
 
@@ -42,8 +44,10 @@ class _CreateSplitPageState extends State<CreateSplitPage> {
         enabledButtons = controller.enableButtons();
         setState(() {});
       }),
-      Container(),
-      Container()
+      StepTwoPage(onChanged: (String value) {
+
+      }),
+      StepThreePage()
     ];
     super.initState();
   }

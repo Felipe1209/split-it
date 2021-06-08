@@ -81,25 +81,25 @@ class AppTextStyles{
     fontWeight: FontWeight.w500,
   );
 
-  static final TextStyle stepOneTitle = GoogleFonts.inter(
+  static final TextStyle stepsTitle = GoogleFonts.inter(
     color: AppColors.black,
     fontSize: 24,
     fontWeight: FontWeight.w700
   );
 
-  static final TextStyle stepOneSubtitle = GoogleFonts.inter(
+  static final TextStyle stepsSubtitle = GoogleFonts.inter(
       color: AppColors.black,
       fontSize: 24,
       fontWeight: FontWeight.w400
   );
 
-  static final TextStyle stepOneHint = GoogleFonts.inter(
+  static final TextStyle stepsHint = GoogleFonts.inter(
       color: AppColors.grey,
       fontSize: 16,
       fontWeight: FontWeight.w400,
   );
 
-  static final TextStyle stepOneTextField = GoogleFonts.inter(
+  static final TextStyle stepsTextField = GoogleFonts.inter(
       color: AppColors.black,
       fontSize: 16,
       fontWeight: FontWeight.w500
