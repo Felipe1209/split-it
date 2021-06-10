@@ -12,13 +12,13 @@ void main(){
   late HomeRepository repository;
   setUp((){
     repository = HomeRepositoryMock();
-    controller = AppBarController(repository: repository, onUpdate: () {  });
+    controller = AppBarController(repository: repository);
   });
 
   test('Testando o GetDashboard - Retornando Success', () async{
     expect(controller.state, isInstanceOf<AppBarStateEmpty>());
     final states = <AppBarState>[];
-    controller.listen((state) => states.add(state));
+    //controller.listen((state) => states.add(state));
     when(repository.getDashboard)
         .thenAnswer((_) async => DashboardModel(send: 120, receive: 300));
     await controller.getDashboard();
@@ -30,7 +30,7 @@ void main(){
   test('Testando o GetDashboard - Retornando Failure', () async{
     expect(controller.state, isInstanceOf<AppBarStateEmpty>());
     final states = <AppBarState>[];
-    controller.listen((state) => states.add(state));
+    //controller.listen((state) => states.add(state));
     when(repository.getDashboard)
         .thenThrow('erro');
     await controller.getDashboard();

@@ -12,13 +12,13 @@ void main(){
   late HomeRepository repository;
   setUp((){
     repository = HomeRepositoryMock();
-    controller = HomeController(onUpdate: () {  }, repository: repository);
+    controller = HomeController();
   });
 
   test('Testando o GetEvents - Retornando Success', () async{
     expect(controller.state, isInstanceOf<HomeStateEmpty>());
     final states = <HomeState>[];
-    controller.listen((state) => states.add(state));
+    //controller.listen((state) => states.add(state));
     when(repository.getEvents)
         .thenAnswer((_) async => [
           EventModel(title: 'title1', date: DateTime.now(), value: 20, people: 2),
@@ -33,7 +33,7 @@ void main(){
   test('Testando o GetEvents - Retornando Failure', () async{
     expect(controller.state, isInstanceOf<HomeStateEmpty>());
     final states = <HomeState>[];
-    controller.listen((state) => states.add(state));
+    //controller.listen((state) => states.add(state));
     when(repository.getEvents)
         .thenThrow('erro');
     await controller.getEvents();

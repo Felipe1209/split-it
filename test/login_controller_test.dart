@@ -12,13 +12,13 @@ void main(){
   late LoginService service;
   setUp((){
     service = LoginServiceMock();
-    controller = LoginController(onUpdate: (){}, service: service);
+    controller = LoginController(service: service);
   });
 
   test('Testando o Google SignIn - Retornando Success', () async{
     expect(controller.state, isInstanceOf<LoginStateEmpty>());
     final states = <LoginState>[];
-    controller.listen((state) => states.add(state));
+    //controller.listen((state) => states.add(state));
     when(service.googleSignIn)
         .thenAnswer((_) async => UserModel(email: 'andrademelo.felipe@gmail.com', id: 'id'));
     await controller.googleSignIn();
@@ -30,7 +30,7 @@ void main(){
   test('Testando o Google SignIn - Retornando Failure', () async{
     expect(controller.state, isInstanceOf<LoginStateEmpty>());
     final states = <LoginState>[];
-    controller.listen((state) => states.add(state));
+    //controller.listen((state) => states.add(state));
     when(service.googleSignIn)
         .thenThrow('erro');
     await controller.googleSignIn();
