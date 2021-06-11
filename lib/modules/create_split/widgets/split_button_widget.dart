@@ -17,7 +17,7 @@ class SplitButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
         child: TextButton(
-          onPressed: onPressed,
+          onPressed: enabled ? onPressed : null,
           child: Text(label, style: enabled
                 ? AppTextStyles.splitButtons
                 : AppTextStyles.splitButtonsDisabled)

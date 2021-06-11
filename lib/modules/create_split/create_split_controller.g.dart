@@ -9,6 +9,14 @@ part of 'create_split_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$CreateSplitController on _CreateSplitControllerBase, Store {
+  Computed<bool>? _$enableButtonsComputed;
+
+  @override
+  bool get enableButtons =>
+      (_$enableButtonsComputed ??= Computed<bool>(() => super.enableButtons,
+              name: '_CreateSplitControllerBase.enableButtons'))
+          .value;
+
   final _$currentPageAtom =
       Atom(name: '_CreateSplitControllerBase.currentPage');
 
@@ -22,6 +30,21 @@ mixin _$CreateSplitController on _CreateSplitControllerBase, Store {
   set currentPage(int value) {
     _$currentPageAtom.reportWrite(value, super.currentPage, () {
       super.currentPage = value;
+    });
+  }
+
+  final _$eventNameAtom = Atom(name: '_CreateSplitControllerBase.eventName');
+
+  @override
+  String get eventName {
+    _$eventNameAtom.reportRead();
+    return super.eventName;
+  }
+
+  @override
+  set eventName(String value) {
+    _$eventNameAtom.reportWrite(value, super.eventName, () {
+      super.eventName = value;
     });
   }
 
@@ -51,9 +74,22 @@ mixin _$CreateSplitController on _CreateSplitControllerBase, Store {
   }
 
   @override
+  void setEventName(String name) {
+    final _$actionInfo = _$_CreateSplitControllerBaseActionController
+        .startAction(name: '_CreateSplitControllerBase.setEventName');
+    try {
+      return super.setEventName(name);
+    } finally {
+      _$_CreateSplitControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-currentPage: ${currentPage}
+currentPage: ${currentPage},
+eventName: ${eventName},
+enableButtons: ${enableButtons}
     ''';
   }
 }
