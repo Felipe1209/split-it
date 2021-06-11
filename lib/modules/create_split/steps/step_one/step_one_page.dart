@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:split_it/modules/create_split/create_split_controller.dart';
 import 'package:split_it/modules/create_split/widgets/step_input_widget.dart';
 import 'package:split_it/modules/create_split/widgets/step_title_widget.dart';
 
 class StepOnePage extends StatefulWidget {
-  final void Function(String) onChanged;
+  final CreateSplitController controller;
 
   const StepOnePage({
     Key? key,
-    required this.onChanged
+    required this.controller
   }) : super(key: key);
 
   @override
@@ -21,7 +22,11 @@ class _StepOnePageState extends State<StepOnePage> {
       children: [
         SizedBox(height: 39),
         StepTitleWidget(title: 'Qual o nome', subtitle: 'do evento?'),
-        StepInputTextWidget(onChanged: widget.onChanged, hintText: 'Ex: Churrasco')
+        StepInputTextWidget(
+            hintText: 'Ex: Churrasco',
+            onChanged: (value){
+              widget.controller.setEventName(value);
+            })
       ],
     );
   }

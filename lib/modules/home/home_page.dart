@@ -29,36 +29,46 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBarWidget(user: user, onTap: () => Navigator.pushNamed(context, '/create-split')),
       body: Observer(builder: (BuildContext context) {
-        if(controller.state is HomeStateLoading){
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CircularProgressIndicator(),
-                SizedBox(height: 10),
-                Text('Localizando seus eventos...', style: AppTextStyles.eventTileTitle)
-            ]),
-          );
-        }
-        else if(controller.state is HomeStateFailure){
-          return Center(
-            child: Text((controller.state as HomeStateFailure).message,
-                style: AppTextStyles.infoCardTitle
-          ));
-        }
-        else{
-          return Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24),
-              child: (controller.events.length == 0) ?
-              Center(child: Text('Você ainda não possui eventos!', style: AppTextStyles.eventTileTitle,)) :
-              ListView.builder(
-                  itemCount: controller.events.length,
-                  itemBuilder: (context, index){
-                    return EventTileWidget(
-                      event: controller.events[index],
-                    );
-                  }
-          ));
+        switch (controller.state.runtimeType) {
+          case HomeStateLoading:
+            {
+              return Center(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CircularProgressIndicator(),
+                      SizedBox(height: 10),
+                      Text('Localizando seus eventos...',
+                          style: AppTextStyles.eventTileTitle)
+                    ]),
+              );
+            }
+          case HomeStateFailure:
+            {
+              return Center(
+                  child: Text((controller.state as HomeStateFailure).message,
+                      style: AppTextStyles.infoCardTitle
+              ));
+            }
+          case HomeStateSuccess:
+            {
+              return Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24),
+                  child: (controller.events.length == 0) ?
+                  Center(child: Text('Você ainda não possui eventos!', style: AppTextStyles.eventTileTitle,)) :
+                  ListView.builder(
+                      itemCount: controller.events.length,
+                      itemBuilder: (context, index){
+                        return EventTileWidget(
+                          event: controller.events[index],
+                        );
+                      }
+              ));
+            }
+          default:
+            {
+              return Container();
+            }
         }
       })
     );
